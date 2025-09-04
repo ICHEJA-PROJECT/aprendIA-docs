@@ -4,7 +4,6 @@ Esta documentación centraliza todos los recursos de nuestros proyectos educativ
 
 - Aprende sobre nuestros **proyectos principales**.
 - Consulta **guías técnicas** para colaborar.
-- Encuentra nuestro **código de conducta y guía de contribución**.
 
 ---
 

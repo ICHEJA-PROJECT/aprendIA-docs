@@ -11,17 +11,11 @@ theme:
 
 nav:
   - Inicio: index.md
-  - Misión y Visión: mision-vision.md
-  - Contribuir: contributing.md
-  - Código de Conducta: code-of-conduct.md
   - Proyectos:
       - Alfabetización: proyectos/alfabetizacion.md
-      - Terrarios Inteligentes: proyectos/terrarios.md
-      - Juegos Educativos: proyectos/juegos.md
   - Guías Técnicas:
-      - Instalación: guias/instalacion.md
-      - Arquitectura: guias/arquitectura.md
-      - CI/CD: guias/ci-cd.md
+      - Arquitectura backend: guias/arquitectura-backend.md
+      - Arquitectura mobile: guias/arquitectura-mobile.md
 
 markdown_extensions:
   - toc:
