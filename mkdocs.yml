@@ -1,5 +1,5 @@
 site_name: Aprendia Docs
-site_url: https://ICHEJA-PROJECT/aprendIA-docs
+site_url: https://icheja-project.github.io/aprendIA-docs/
 theme:
   name: material
   palette:
