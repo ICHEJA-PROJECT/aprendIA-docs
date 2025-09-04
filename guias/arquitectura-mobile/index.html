@@ -1,0 +1,1314 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://icheja-project.github.io/aprendIA-docs/guias/arquitectura-mobile/">
+      
+      
+        <link rel="prev" href="../arquitectura-backend/">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Arquitectura mobile - Aprendia Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#guia-de-arquitectura-para-frontend-mobile-flutter" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Aprendia Docs" class="md-header__button md-logo" aria-label="Aprendia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Aprendia Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Arquitectura mobile
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Aprendia Docs" class="md-nav__button md-logo" aria-label="Aprendia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Aprendia Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Proyectos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Proyectos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../proyectos/alfabetizacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Alfabetización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Guías Técnicas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Guías Técnicas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arquitectura-backend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Arquitectura backend
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Arquitectura mobile
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Arquitectura mobile
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-estructura-del-proyecto-y-capas" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Estructura del Proyecto y Capas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Estructura del Proyecto y Capas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-capa-core-libcore" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. Capa core (/lib/core)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-capa-shared-libshared" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2. Capa shared (/lib/shared)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-capa-features-libfeatures" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3. Capa features (/lib/features)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-flujo-de-comunicacion-y-gestion-de-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Flujo de Comunicación y Gestión de Dependencias
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Flujo de Comunicación y Gestión de Dependencias">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-flujo-de-datos-una-via" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Flujo de Datos (Una Vía)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-inyeccion-de-dependencias-capa-de-aplicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. inyección de Dependencias (Capa de Aplicación)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-manejo-de-datos-dtos-y-adaptadores-en-la-capa-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Manejo de Datos: DTOs y Adaptadores en la Capa data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Manejo de Datos: DTOs y Adaptadores en la Capa data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-data-transfer-objects-dtos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Data Transfer Objects (DTOs)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-adaptadores-mapeadores-en-la-capa-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Adaptadores (Mapeadores) en la capa data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-comunicacion-con-apis-dio" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Comunicación con APIs: Dio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Comunicación con APIs: Dio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-configuracion-global-de-dio" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Configuración Global de Dio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-clientes-de-api-en-la-capa-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Clientes de API (en la capa data)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-manejo-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Manejo de errores
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Manejo de errores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-clases-de-fallo-base-coreerrors" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Clases de Fallo Base (core/errors)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-excepciones-de-dominio-featuresfeaturedomainexceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. Excepciones de Dominio (features/[feature]/domain/exceptions)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-mapeo-y-propagacion-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3. Mapeo y Propagación de Errores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-presentacion-de-errores-en-la-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4. Presentación de Errores en la UI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-convenciones-generales-de-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Convenciones generales de código
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-estructura-del-proyecto-y-capas" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Estructura del Proyecto y Capas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Estructura del Proyecto y Capas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-capa-core-libcore" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1. Capa core (/lib/core)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-capa-shared-libshared" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2. Capa shared (/lib/shared)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-capa-features-libfeatures" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3. Capa features (/lib/features)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-flujo-de-comunicacion-y-gestion-de-dependencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Flujo de Comunicación y Gestión de Dependencias
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Flujo de Comunicación y Gestión de Dependencias">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-flujo-de-datos-una-via" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1. Flujo de Datos (Una Vía)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-inyeccion-de-dependencias-capa-de-aplicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2. inyección de Dependencias (Capa de Aplicación)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-manejo-de-datos-dtos-y-adaptadores-en-la-capa-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Manejo de Datos: DTOs y Adaptadores en la Capa data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Manejo de Datos: DTOs y Adaptadores en la Capa data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-data-transfer-objects-dtos" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Data Transfer Objects (DTOs)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-adaptadores-mapeadores-en-la-capa-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Adaptadores (Mapeadores) en la capa data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-comunicacion-con-apis-dio" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Comunicación con APIs: Dio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Comunicación con APIs: Dio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-configuracion-global-de-dio" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1. Configuración Global de Dio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-clientes-de-api-en-la-capa-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2. Clientes de API (en la capa data)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-manejo-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Manejo de errores
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Manejo de errores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-clases-de-fallo-base-coreerrors" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Clases de Fallo Base (core/errors)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-excepciones-de-dominio-featuresfeaturedomainexceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. Excepciones de Dominio (features/[feature]/domain/exceptions)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-mapeo-y-propagacion-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3. Mapeo y Propagación de Errores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-presentacion-de-errores-en-la-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4. Presentación de Errores en la UI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-convenciones-generales-de-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Convenciones generales de código
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="guia-de-arquitectura-para-frontend-mobile-flutter">Guía de Arquitectura para Frontend Mobile (Flutter)<a class="headerlink" href="#guia-de-arquitectura-para-frontend-mobile-flutter" title="Permanent link">&para;</a></h1>
+<p>Este documento es una guía técnica esencial para desarrolladores que se unen o colaboran en nuestro proyecto frontend en Flutter. Detalla la arquitectura, las convenciones de código y las buenas prácticas que seguimos para asegurar una integración fluida y un desarrollo coherente, mantenible y escalable.</p>
+<p>Nuestra arquitectura se basa en una combinación estricta de Clean Architecture y Domain-Driven Design (DDD), con una organización modular que sigue los principios de Screaming Architecture dentro de las funcionalidades (features).</p>
+<hr />
+<h2 id="1-estructura-del-proyecto-y-capas">1. Estructura del Proyecto y Capas<a class="headerlink" href="#1-estructura-del-proyecto-y-capas" title="Permanent link">&para;</a></h2>
+<p>El proyecto está organizado en capas de alto nivel y, dentro de estas, en módulos de funcionalidad. Las dependencias siempre fluyen hacia el centro, manteniendo el desacoplamiento y cumpliendo con el Principio de Inversión de Dependencias (DIP) de SOLID.</p>
+<div class="codehilite"><pre><span></span><code>.
+├──<span class="w"> </span>lib
+│<span class="w">   </span>├──<span class="w"> </span>core<span class="w">                    </span><span class="c1"># Componentes fundamentales y transversales</span>
+│<span class="w">   </span>├──<span class="w"> </span>shared<span class="w">                  </span><span class="c1"># Widgets y utilidades reutilizables</span>
+│<span class="w">   </span>├──<span class="w"> </span>features<span class="w">                </span><span class="c1"># Módulos de funcionalidad (Screaming Architecture por feature)</span>
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>auth<span class="w">                </span><span class="c1"># Ejemplo de Feature: Autenticación</span>
+│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>application<span class="w">     </span><span class="c1"># Inyección de dependencias para esta feature</span>
+│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>domain<span class="w">          </span><span class="c1"># Lógica de negocio, Casos de Uso, Entidades, Repositorios (Interfaces)</span>
+│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>data<span class="w">            </span><span class="c1"># Implementaciones de repositorios (fuentes de datos), DTOs, Adaptadores</span>
+│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>presentation<span class="w">    </span><span class="c1"># Vistas, Widgets y View Models</span>
+│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>...<span class="w"> </span>otros<span class="w"> </span>features
+│<span class="w">   </span>└──<span class="w"> </span>main.dart<span class="w">               </span><span class="c1"># Punto de entrada de la aplicación</span>
+├──<span class="w"> </span>pubspec.yaml
+├──<span class="w"> </span>analysis_options.yaml
+└──<span class="w"> </span>...
+</code></pre></div>
+
+<hr />
+<h3 id="11-capa-core-libcore">1.1. Capa core (<code>/lib/core</code>)<a class="headerlink" href="#11-capa-core-libcore" title="Permanent link">&para;</a></h3>
+<p>Contiene componentes fundamentales y transversales, independientes de la lógica de negocio y de la UI.</p>
+<ul>
+<li><strong>Propósito:</strong> Proporcionar la infraestructura básica y genérica que otras capas necesitan.</li>
+<li>
+<p><strong>Contiene:</strong></p>
+<ul>
+<li><code>/config</code>: Configuraciones de entorno, constantes globales.</li>
+<li><code>/errors</code>: Clases base para <code>Failures</code> y excepciones a nivel de aplicación (ej. <code>ServerFailure</code>, <code>NetworkFailure</code>).</li>
+<li><code>/network</code>: Configuración global de Dio  (<code>dio_config.dart</code>), interceptores genéricos.</li>
+<li><code>/utils</code>: Utilidades genéricas (ej. <code>logger.dart</code>).</li>
+</ul>
+</li>
+<li>
+<p><strong>Convenciones:</strong></p>
+<ul>
+<li>No debe depender de ninguna otra capa de negocio (<code>features</code>, <code>shared</code>). Puede ser utilizada por cualquiera.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="12-capa-shared-libshared">1.2. Capa shared (<code>/lib/shared</code>)<a class="headerlink" href="#12-capa-shared-libshared" title="Permanent link">&para;</a></h3>
+<p>Componentes reutilizables comunes a través de múltiples <code>features</code>, más cercanos a la presentación o utilidades de UI.</p>
+<ul>
+<li>
+<p><strong>Propósito:</strong> Centralizar código común para evitar duplicación y promover la reutilización de componentes UI.</p>
+</li>
+<li>
+<p><strong>Contiene:</strong></p>
+<ul>
+<li><code>/widgets</code>: Widgets personalizados reutilizables (ej. <code>CustomButton</code>, <code>LoadingIndicator</code>).</li>
+<li><code>/styles</code>: Definiciones de temas, colores, fuentes.</li>
+<li><code>/helpers</code>: Funciones de ayuda generales (ej. <code>ValidationHelper</code>).</li>
+<li><code>/constants</code>: Constantes relacionadas con la UI o valores compartidos.</li>
+</ul>
+</li>
+<li>
+<p><strong>Convenciones:</strong></p>
+<ul>
+<li>Puede depender de <code>core</code>. No debe depender de ninguna <code>feature</code>.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="13-capa-features-libfeatures">1.3. Capa features (<code>/lib/features</code>)<a class="headerlink" href="#13-capa-features-libfeatures" title="Permanent link">&para;</a></h3>
+<p>Esta es la capa principal donde reside la lógica de negocio modularizada. Cada <code>feature</code> (ej. <code>/lib/features/auth</code>) es una funcionalidad independiente que sigue la Clean Architecture internamente.</p>
+<ul>
+<li>
+<p><strong>Propósito:</strong> Encapsular funcionalidades completas del negocio, permitiendo un desarrollo, prueba y mantenimiento aislados.</p>
+</li>
+<li>
+<p><strong>Contiene</strong>: Cada <code>feature</code> tiene sus propias subcarpetas:</p>
+<ul>
+<li>
+<p><code>/application</code>:</p>
+<ul>
+<li><strong>Propósito</strong>: Módulo de inyección de dependencias y orquestación de alto nivel para la <code>feature</code>. Proporciona las instancias concretas de casos de uso y sus dependencias a la capa de <code>presentation</code>.</li>
+<li><strong>Contiene</strong>: Archivos de configuración de inyección (ej. <code>auth_injector.dart</code>).</li>
+</ul>
+</li>
+<li>
+<p><code>/domain</code>:</p>
+<ul>
+<li><strong>Propósito</strong>: El corazón de la <code>feature</code>. Contiene la lógica de negocio pura, incluyendo los Casos de Uso.</li>
+<li><strong>Contiene</strong>: <code>/entities</code>, <code>/value_objects</code>, <code>/repositories</code> (Interfaces), <code>/use_cases</code>, <code>/exceptions</code> (de negocio).</li>
+<li><strong>Convenciones</strong>: No debe depender de ninguna otra capa de la feature (data, presentation). Puede depender de core/errors.</li>
+</ul>
+</li>
+<li>
+<p><code>/data</code>:</p>
+<ul>
+<li><strong>Propósito</strong>: Implementa los contratos (interfaces) del Dominio, manejando la entrada y salida de datos (APIs, bases de datos locales).</li>
+<li><strong>Contiene</strong>: <code>/repositories</code> (Implementaciones concretas), <code>/data_sources</code> o <code>/api_clients</code> (usan Dio), <code>/dtos</code>, <code>/adapters</code> o <code>/mappers</code>.</li>
+<li><strong>Convenciones</strong>: Solo debe depender de la capa <code>domain</code> de su <code>feature</code> y de la capa <code>core</code>.</li>
+</ul>
+</li>
+<li>
+<p><code>/presentation</code>:</p>
+<ul>
+<li><strong>Propósito</strong>: Contiene la interfaz de usuario.</li>
+<li><strong>Contiene</strong>: <code>/pages</code>, <code>/widgets</code> (específicos de la feature), <code>/view_models</code> (<code>ChangeNotifier</code> de Provider).</li>
+<li><strong>Convenciones</strong>: Solo debe depender de la capa <code>application</code> de su <code>feature</code> y de la capa <code>shared</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Convenciones Generales</strong> de <code>features</code>:</p>
+<ul>
+<li>Cada <code>feature</code> es un módulo autónomo. Las dependencias internas siguen: <code>Presentation</code> -&gt; <code>Application</code> -&gt; <code>Domain</code> &lt;- <code>Data</code>.</li>
+<li>Puede depender de <code>core</code> y <code>shared</code>. No debe depender directamente de otras <code>features</code>.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="2-flujo-de-comunicacion-y-gestion-de-dependencias">2. Flujo de Comunicación y Gestión de Dependencias<a class="headerlink" href="#2-flujo-de-comunicacion-y-gestion-de-dependencias" title="Permanent link">&para;</a></h2>
+<h3 id="21-flujo-de-datos-una-via">2.1. Flujo de Datos (Una Vía)<a class="headerlink" href="#21-flujo-de-datos-una-via" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Vista (Feature/Presentation):</strong> Evento de UI.</li>
+<li><strong>View Model (Feature/Presentation):</strong> Invoca el Caso de Uso de <code>feature/domain/use_cases</code>.</li>
+<li><strong>Caso de Uso (Feature/Domain):</strong> Ejecuta lógica de negocio, utiliza interfaces de Repositorio de <code>feature/domain/repositories</code>.</li>
+<li><strong>Repositorio (Feature/Domain - Interfaz):</strong> Llama a un método definido en la interfaz del <code>Repository</code>.</li>
+<li><strong>Implementación del Repositorio (Feature/Data):</strong> Realiza la operación real (ej. llamada a API con Dio), maneja <strong>DTOs</strong> de <code>feature/data/dtos</code> y los mapea a las Entidades de Dominio.</li>
+<li><strong>Dominio (Feature/Domain):</strong> Entidades aplican reglas de negocio puras.</li>
+<li><strong>Retorno:</strong> El resultado se propaga al ViewModel.</li>
+<li><strong>View Model:</strong> Actualiza su estado interno y notifica a sus oyentes (<code>notifyListeners()</code>).</li>
+<li><strong>Vista:</strong> Se reconstruye para reflejar el nuevo estado.</li>
+</ol>
+<h3 id="22-inyeccion-de-dependencias-capa-de-aplicacion">2.2. inyección de Dependencias (Capa de Aplicación)<a class="headerlink" href="#22-inyeccion-de-dependencias-capa-de-aplicacion" title="Permanent link">&para;</a></h3>
+<p>La capa de <strong>Aplicación</strong> es clave para la <strong>Inversión de Dependencias (DIP)</strong>, configurando y proporcionando las dependencias concretas.</p>
+<ul>
+<li><strong>Configuración centralizada en</strong> <code>main.dart</code> <strong>o</strong> <code>app_router.dart</code>:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="n">MultiProvider</span><span class="p">(</span>
+<span class="w">  </span><span class="nl">providers:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="c1">// Dependencias Core/Globales</span>
+<span class="w">    </span><span class="n">Provider</span><span class="o">&lt;</span><span class="n">Dio</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">create:</span><span class="w"> </span><span class="p">(</span><span class="n">_</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">DioConfig</span><span class="p">.</span><span class="n">createDio</span><span class="p">()),</span>
+
+<span class="w">    </span><span class="c1">// Feature: Auth Dependencies (Data -&gt; Domain -&gt; Presentation)</span>
+<span class="w">    </span><span class="n">Provider</span><span class="o">&lt;</span><span class="n">AuthApiClient</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">create:</span><span class="w"> </span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">AuthApiClient</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">read</span><span class="o">&lt;</span><span class="n">Dio</span><span class="o">&gt;</span><span class="p">())),</span>
+<span class="w">    </span><span class="n">Provider</span><span class="o">&lt;</span><span class="n">UserRepository</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">create:</span><span class="w"> </span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">UserRepositoryImpl</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">read</span><span class="o">&lt;</span><span class="n">AuthApiClient</span><span class="o">&gt;</span><span class="p">())),</span>
+<span class="w">    </span><span class="n">Provider</span><span class="o">&lt;</span><span class="n">SignInUserUseCase</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">create:</span><span class="w"> </span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">SignInUserUseCase</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">read</span><span class="o">&lt;</span><span class="n">UserRepository</span><span class="o">&gt;</span><span class="p">())),</span>
+<span class="w">    </span><span class="n">ChangeNotifierProvider</span><span class="o">&lt;</span><span class="n">AuthViewModel</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">create:</span><span class="w"> </span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">AuthViewModel</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">read</span><span class="o">&lt;</span><span class="n">SignInUserUseCase</span><span class="o">&gt;</span><span class="p">())),</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nl">child:</span><span class="w"> </span><span class="n">MyApp</span><span class="p">(),</span>
+<span class="p">);</span>
+</code></pre></div>
+
+<ul>
+<li><strong>Inyección en Constructores</strong>: Todas las clases reciben sus dependencias a través de sus constructores.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Ejemplo: Caso de Uso recibiendo un Repositorio (Interfaz)</span>
+<span class="kd">class</span><span class="w"> </span><span class="nc">SignInUserUseCase</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">final</span><span class="w"> </span><span class="n">UserRepository</span><span class="w"> </span><span class="n">_userRepository</span><span class="p">;</span>
+<span class="w">  </span><span class="n">SignInUserUseCase</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_userRepository</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="3-manejo-de-datos-dtos-y-adaptadores-en-la-capa-data">3. Manejo de Datos: DTOs y Adaptadores en la Capa <code>data</code><a class="headerlink" href="#3-manejo-de-datos-dtos-y-adaptadores-en-la-capa-data" title="Permanent link">&para;</a></h2>
+<h3 id="31-data-transfer-objects-dtos">3.1. Data Transfer Objects (DTOs)<a class="headerlink" href="#31-data-transfer-objects-dtos" title="Permanent link">&para;</a></h3>
+<p>Los <strong>DTOs</strong> son clases simples e inmutables, para transferir datos entre las capas. Se ubican en <code>/lib/features/[feature]/data/dtos.</code></p>
+<ul>
+<li><strong>Implementación</strong>: Se crearán <strong>manualmente</strong>, incluyendo métodos como <code>fromJson</code> y <code>toJson</code> para la serialización/deserialización, o métodos de mapeo directo si la comunicación no es JSON.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Ejemplo: AuthRequestDto</span>
+<span class="kd">class</span><span class="w"> </span><span class="nc">AuthRequestDto</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">final</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">email</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">final</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">password</span><span class="p">;</span>
+<span class="w">  </span><span class="n">AuthRequestDto</span><span class="p">({</span><span class="kd">required</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="kd">required</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">password</span><span class="p">});</span>
+<span class="w">  </span><span class="n">Map</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="kt">dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="n">toJson</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="s1">&#39;email&#39;</span><span class="o">:</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;password&#39;</span><span class="o">:</span><span class="w"> </span><span class="n">password</span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c1">// Ejemplo: AuthResponseDto</span>
+<span class="kd">class</span><span class="w"> </span><span class="nc">AuthResponseDto</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">final</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">token</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">final</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">userId</span><span class="p">;</span>
+<span class="w">  </span><span class="n">AuthResponseDto</span><span class="p">({</span><span class="kd">required</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">token</span><span class="p">,</span><span class="w"> </span><span class="kd">required</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">userId</span><span class="p">});</span>
+<span class="w">  </span><span class="kd">factory</span><span class="w"> </span><span class="n">AuthResponseDto</span><span class="p">.</span><span class="n">fromJson</span><span class="p">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="kt">dynamic</span><span class="o">&gt;</span><span class="w"> </span><span class="n">json</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">AuthResponseDto</span><span class="p">(</span><span class="nl">token:</span><span class="w"> </span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">],</span><span class="w"> </span><span class="nl">userId:</span><span class="w"> </span><span class="n">json</span><span class="p">[</span><span class="s1">&#39;user_id&#39;</span><span class="p">]);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="32-adaptadores-mapeadores-en-la-capa-data">3.2. Adaptadores (Mapeadores) en la capa <code>data</code><a class="headerlink" href="#32-adaptadores-mapeadores-en-la-capa-data" title="Permanent link">&para;</a></h3>
+<p>Transforman datos entre DTOs y entidades de dominio.</p>
+<ul>
+<li>
+<p><strong>Propósito</strong>: Mapear los DTOs de <code>data</code> (ej. <code>AuthResponseDto</code>) a las Entidades de Dominio (ej. <code>User</code>) y viceversa.</p>
+</li>
+<li>
+<p><strong>Ubicación</strong>: Como métodos dentro de los DTOs, como extensiones, o en clases <code>Mapper</code> dedicadas en <code>/lib/features/[feature]/data/mappers</code>.</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Ejemplo: Método de mapeo en AuthResponseDto</span>
+<span class="kd">class</span><span class="w"> </span><span class="nc">AuthResponseDto</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// ... propiedades y fromJson</span>
+<span class="w">  </span><span class="n">User</span><span class="w"> </span><span class="n">toDomainEntity</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">User</span><span class="p">(</span><span class="nl">id:</span><span class="w"> </span><span class="n">userId</span><span class="p">,</span><span class="w"> </span><span class="nl">token:</span><span class="w"> </span><span class="n">token</span><span class="p">);</span><span class="w"> </span><span class="c1">// Mapeo a Entidad de Dominio</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Uso en la Implementación del Repositorio:</span>
+<span class="kd">class</span><span class="w"> </span><span class="nc">UserRepositoryImpl</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">UserRepository</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// ...</span>
+<span class="w">  </span><span class="n">Future</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="w"> </span><span class="n">signIn</span><span class="p">(</span><span class="kt">String</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="kt">String</span><span class="w"> </span><span class="n">password</span><span class="p">)</span><span class="w"> </span><span class="kd">async</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">requestDto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AuthRequestDto</span><span class="p">(</span><span class="nl">email:</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="nl">password:</span><span class="w"> </span><span class="n">password</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">responseDto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">await</span><span class="w"> </span><span class="n">_authApiClient</span><span class="p">.</span><span class="n">signIn</span><span class="p">(</span><span class="n">requestDto</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">responseDto</span><span class="p">.</span><span class="n">toDomainEntity</span><span class="p">();</span><span class="w"> </span><span class="c1">// Usa el método de mapeo</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="4-comunicacion-con-apis-dio">4. Comunicación con APIs: Dio<a class="headerlink" href="#4-comunicacion-con-apis-dio" title="Permanent link">&para;</a></h2>
+<p><strong>Dio</strong> es nuestro cliente HTTP principal, configurado globalmente en la capa <code>core</code> y utilizado por los <code>ApiClients</code> en la capa <code>data</code>.</p>
+<h3 id="41-configuracion-global-de-dio">4.1. Configuración Global de Dio<a class="headerlink" href="#41-configuracion-global-de-dio" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>La instancia de Dio se crea y configura en <code>lib/core/network/dio_config.dart</code>.</p>
+</li>
+<li>
+<p>Incluye <code>BaseOptions</code>, <code>LogInterceptor</code>, y <code>InterceptorsWrapper</code> para lógica transversal (autenticación, manejo de errores HTTP genéricos).</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="c1">// lib/core/network/dio_config.dart</span>
+<span class="kd">class</span><span class="w"> </span><span class="nc">DioConfig</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">static</span><span class="w"> </span><span class="n">Dio</span><span class="w"> </span><span class="n">createDio</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">final</span><span class="w"> </span><span class="n">dio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Dio</span><span class="p">(</span><span class="n">BaseOptions</span><span class="p">(</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">));</span>
+<span class="w">    </span><span class="n">dio</span><span class="p">.</span><span class="n">interceptors</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">LogInterceptor</span><span class="p">(</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">));</span>
+<span class="w">    </span><span class="n">dio</span><span class="p">.</span><span class="n">interceptors</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">InterceptorsWrapper</span><span class="p">(</span>
+<span class="w">      </span><span class="nl">onRequest:</span><span class="w"> </span><span class="p">(</span><span class="n">options</span><span class="p">,</span><span class="w"> </span><span class="n">handler</span><span class="p">)</span><span class="w"> </span><span class="kd">async</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* Añadir tokens */</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">handler</span><span class="p">.</span><span class="n">next</span><span class="p">(</span><span class="n">options</span><span class="p">);</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="nl">onError:</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">handler</span><span class="p">)</span><span class="w"> </span><span class="kd">async</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* Manejo 401, etc. */</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">handler</span><span class="p">.</span><span class="n">next</span><span class="p">(</span><span class="n">e</span><span class="p">);</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">));</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">dio</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="42-clientes-de-api-en-la-capa-data">4.2. Clientes de API (en la capa <code>data</code>)<a class="headerlink" href="#42-clientes-de-api-en-la-capa-data" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Clases dedicadas en <code>/lib/features/[feature]/data/data_sources</code> que exponen métodos para cada endpoint de la API.</p>
+</li>
+<li>
+<p>Reciben la instancia de <code>Dio</code> global.</p>
+</li>
+<li>
+<p>Manejan la llamada HTTP y devuelven los DTOs de <code>data</code>.</p>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="c1">// lib/features/auth/data/data_sources/auth_api_client.dart</span>
+<span class="kd">class</span><span class="w"> </span><span class="nc">AuthApiClient</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">final</span><span class="w"> </span><span class="n">Dio</span><span class="w"> </span><span class="n">_dio</span><span class="p">;</span>
+<span class="w">  </span><span class="n">AuthApiClient</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">_dio</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Future</span><span class="o">&lt;</span><span class="n">AuthResponseDto</span><span class="o">&gt;</span><span class="w"> </span><span class="n">signIn</span><span class="p">(</span><span class="n">AuthRequestDto</span><span class="w"> </span><span class="n">requestDto</span><span class="p">)</span><span class="w"> </span><span class="kd">async</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">final</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">await</span><span class="w"> </span><span class="n">_dio</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;/auth/login&#39;</span><span class="p">,</span><span class="w"> </span><span class="nl">data:</span><span class="w"> </span><span class="n">requestDto</span><span class="p">.</span><span class="n">toJson</span><span class="p">());</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">AuthResponseDto</span><span class="p">.</span><span class="n">fromJson</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="kd">on</span><span class="w"> </span><span class="n">DioException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">rethrow</span><span class="p">;</span><span class="w"> </span><span class="c1">// Relanzar para que el Repositorio la capture</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="5-manejo-de-errores">5. Manejo de errores<a class="headerlink" href="#5-manejo-de-errores" title="Permanent link">&para;</a></h2>
+<p>Un manejo de errores consistente a través de las capas es fundamental.</p>
+<h3 id="51-clases-de-fallo-base-coreerrors">5.1. Clases de Fallo Base (<code>core/errors</code>)<a class="headerlink" href="#51-clases-de-fallo-base-coreerrors" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Define una jerarquía de clases de <code>Failure</code> en <code>/lib/core/errors</code> para fallos técnicos o del sistema (ej. <code>ServerFailure</code>, <code>NetworkFailure</code>).</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="c1">// lib/core/errors/failures.dart</span>
+<span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">Failure</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="kd">class</span><span class="w"> </span><span class="nc">ServerFailure</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Failure</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="kd">class</span><span class="w"> </span><span class="nc">NetworkFailure</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Failure</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+
+<h3 id="52-excepciones-de-dominio-featuresfeaturedomainexceptions">5.2. Excepciones de Dominio (<code>features/[feature]/domain/exceptions</code>)<a class="headerlink" href="#52-excepciones-de-dominio-featuresfeaturedomainexceptions" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Se definen por cada <code>feature</code> para representar errores de negocio puros (ej. <code>InvalidCredentialsException</code>, <code>UserNotFoundException</code>).</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="c1">// lib/features/auth/domain/exceptions/auth_exceptions.dart</span>
+<span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nc">AuthException</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Exception</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+<span class="kd">class</span><span class="w"> </span><span class="nc">InvalidCredentialsException</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">AuthException</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+
+<h3 id="53-mapeo-y-propagacion-de-errores">5.3. Mapeo y Propagación de Errores<a class="headerlink" href="#53-mapeo-y-propagacion-de-errores" title="Permanent link">&para;</a></h3>
+<p>El mapeo de errores es un proceso de dos pasos crucial:</p>
+<ul>
+<li>
+<p>Capa <code>data</code> (<code>features/[feature]/data/repositories</code>):</p>
+<ul>
+<li>
+<p>Captura <code>DioException</code> y otras excepciones de bajo nivel.</p>
+</li>
+<li>
+<p>Mapea estas excepciones a las Excepciones de Dominio o a los <code>Failure</code> genéricos de <code>core</code>.</p>
+</li>
+<li>
+<p>Luego, la excepción/fallo se relanza.</p>
+</li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Dentro de UserRepositoryImpl.signIn</span>
+<span class="p">}</span><span class="w"> </span><span class="kd">on</span><span class="w"> </span><span class="n">DioException</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">response</span><span class="o">?</span><span class="p">.</span><span class="n">statusCode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">400</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="n">InvalidCredentialsException</span><span class="p">(</span><span class="s1">&#39;Credenciales inválidas.&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">DioExceptionType</span><span class="p">.</span><span class="n">connectionTimeout</span><span class="p">)</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="n">NetworkFailure</span><span class="p">();</span>
+<span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">throw</span><span class="w"> </span><span class="n">ServerFailure</span><span class="p">();</span><span class="w"> </span><span class="c1">// u otro Failure más genérico</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="n">Failure</span><span class="p">(</span><span class="nl">message:</span><span class="w"> </span><span class="s1">&#39;Error desconocido en datos: </span><span class="si">${</span><span class="n">e</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p>Capa <code>domain</code> (<code>features/[feature]/domain/use_cases</code>):</p>
+<ul>
+<li>Los casos de uso <strong>simplemente relanzan</strong> las excepciones de Dominio o los <code>Failures</code> que les llegan.</li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Dentro de SignInUserUseCase.execute</span>
+<span class="p">}</span><span class="w"> </span><span class="kd">on</span><span class="w"> </span><span class="n">AuthException</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">rethrow</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="kd">on</span><span class="w"> </span><span class="n">Failure</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">rethrow</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="n">Failure</span><span class="p">(</span><span class="nl">message:</span><span class="w"> </span><span class="s1">&#39;Error inesperado en caso de uso: </span><span class="si">${</span><span class="n">e</span><span class="p">.</span><span class="n">toString</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>
+<p>Capa <code>presentation</code> (<code>features/[feature]/presentation/view_models</code>):</p>
+<ul>
+<li>
+<p>Los ViewModel capturan las excepciones de Dominio y Failures.</p>
+</li>
+<li>
+<p>Traducen estos fallos en mensajes amigables para el usuario (_errorMessage) y actualizan el estado de la UI.</p>
+</li>
+</ul>
+</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="c1">// Dentro de AuthViewModel.signIn</span>
+<span class="p">}</span><span class="w"> </span><span class="kd">on</span><span class="w"> </span><span class="n">InvalidCredentialsException</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_errorMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">message</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="kd">on</span><span class="w"> </span><span class="n">NetworkFailure</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_errorMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">message</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="kd">on</span><span class="w"> </span><span class="n">ServerFailure</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_errorMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">message</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="c1">// ... otros catches</span>
+<span class="k">finally</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_isLoading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"> </span><span class="n">notifyListeners</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+
+<h3 id="54-presentacion-de-errores-en-la-ui">5.4. Presentación de Errores en la UI<a class="headerlink" href="#54-presentacion-de-errores-en-la-ui" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>La Vista observa el <code>_errorMessage</code> del <strong>ViewModel</strong> y lo muestra usando componentes de <code>shared/widgets</code> (ej. <code>ErrorDialog</code>, <code>SnackBar</code>).</p>
+</li>
+<li>
+<p>El <strong>ViewModel</strong> debe limpiar el error (<code>clearError()</code>) después de mostrarlo.</p>
+</li>
+</ul>
+<h2 id="6-convenciones-generales-de-codigo">6. Convenciones generales de código<a class="headerlink" href="#6-convenciones-generales-de-codigo" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><strong>Nomenclatura</strong>:</p>
+<ul>
+<li>
+<p>Archivos y directorios: <code>snake_case</code>.</p>
+</li>
+<li>
+<p>Clases/Enums/Typedefs: <code>PascalCase</code>.</p>
+</li>
+<li>
+<p>Métodos/Variables: <code>camelCase</code>.</p>
+</li>
+<li>
+<p>Constantes: <code>SCREAMING_SNAKE_CASE</code> (globales estáticas), <code>camelCase</code> con const.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Comentarios y Documentación</strong>: Documentar clases, métodos y propiedades públicas con comentarios DART (<code>///.</code>)</p>
+</li>
+<li>
+<p><strong>Inmutabilidad</strong>: Preferir objetos inmutables, especialmente en las capas de Dominio y en los DTOs. Considerar <strong>freezed</strong> para clases inmutables y <strong>copyWith</strong>.</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>

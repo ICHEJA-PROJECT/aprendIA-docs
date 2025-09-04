@@ -1,0 +1,1122 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://icheja-project.github.io/aprendIA-docs/guias/arquitectura-backend/">
+      
+      
+        <link rel="prev" href="../../proyectos/alfabetizacion/">
+      
+      
+        <link rel="next" href="../arquitectura-mobile/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Arquitectura backend - Aprendia Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#guia-de-arquitectura-base-para-microservicios" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Aprendia Docs" class="md-header__button md-logo" aria-label="Aprendia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Aprendia Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Arquitectura backend
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Aprendia Docs" class="md-nav__button md-logo" aria-label="Aprendia Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Aprendia Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Proyectos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Proyectos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../proyectos/alfabetizacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Alfabetización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Guías Técnicas
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Guías Técnicas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Arquitectura backend
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Arquitectura backend
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-principios-arquitectonicos-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Principios Arquitectónicos Clave
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-estructura-general-del-microservicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Estructura General del Microservicio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-descripcion-de-capas-minimas-necesarias" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Descripción de Capas Mínimas Necesarias
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Descripción de Capas Mínimas Necesarias">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-capa-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Capa core
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-capa-utils" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Capa utils
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-capa-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Capa application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-capa-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4. Capa features/
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4. Capa features/">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#341-controllers" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.1. controllers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#342-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.2. services
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#343-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.3. domain
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#344-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.4. data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#345-transports" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.5. transports
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-flujo-de-comunicacion-tipico-restful" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Flujo de Comunicación Típico (RESTful)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-componentes-obligatorios-del-microservicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Componentes Obligatorios del Microservicio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Componentes Obligatorios del Microservicio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-dockerfile-funcional" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Dockerfile Funcional
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-archivo-de-configuracion-de-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. Archivo de Configuración de Entorno
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-documentacion-swaggeropenapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3. Documentación Swagger/OpenAPI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-readmemd-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4. README.md Completo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-punto-de-entrada-bien-definido" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.5. Punto de Entrada Bien Definido
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-control-centralizado-de-errores-y-status-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.6. Control Centralizado de Errores y Status HTTP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-sistema-de-logging-estructurado" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.7. Sistema de Logging Estructurado
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-directrices-adicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Directrices Adicionales
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arquitectura-mobile/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Arquitectura mobile
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-principios-arquitectonicos-clave" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Principios Arquitectónicos Clave
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-estructura-general-del-microservicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Estructura General del Microservicio
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-descripcion-de-capas-minimas-necesarias" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Descripción de Capas Mínimas Necesarias
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Descripción de Capas Mínimas Necesarias">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-capa-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1. Capa core
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-capa-utils" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2. Capa utils
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-capa-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3. Capa application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-capa-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4. Capa features/
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4. Capa features/">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#341-controllers" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.1. controllers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#342-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.2. services
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#343-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.3. domain
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#344-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.4. data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#345-transports" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.5. transports
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-flujo-de-comunicacion-tipico-restful" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Flujo de Comunicación Típico (RESTful)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-componentes-obligatorios-del-microservicio" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Componentes Obligatorios del Microservicio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Componentes Obligatorios del Microservicio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-dockerfile-funcional" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1. Dockerfile Funcional
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-archivo-de-configuracion-de-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2. Archivo de Configuración de Entorno
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-documentacion-swaggeropenapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3. Documentación Swagger/OpenAPI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-readmemd-completo" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4. README.md Completo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-punto-de-entrada-bien-definido" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.5. Punto de Entrada Bien Definido
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-control-centralizado-de-errores-y-status-http" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.6. Control Centralizado de Errores y Status HTTP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-sistema-de-logging-estructurado" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.7. Sistema de Logging Estructurado
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-directrices-adicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Directrices Adicionales
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="guia-de-arquitectura-base-para-microservicios">Guía de Arquitectura Base para Microservicios<a class="headerlink" href="#guia-de-arquitectura-base-para-microservicios" title="Permanent link">&para;</a></h1>
+<p>Este documento establece la arquitectura base y las convenciones para el desarrollo de microservicios en nuestro ecosistema. El objetivo es proporcionar una guía limpia, pragmática y agnóstica al lenguaje que garantice coherencia, mantenibilidad y escalabilidad en todos nuestros servicios. Nos enfocamos en una arquitectura RESTful inicial, con una visión clara hacia la futura integración de sistemas basados en eventos.</p>
+<p>Adoptamos principios clave de Domain-Driven Design (DDD) y Screaming Architecture, organizando el código de manera intuitiva por funcionalidades (features) y capas.</p>
+<hr />
+<h2 id="1-principios-arquitectonicos-clave">1. Principios Arquitectónicos Clave<a class="headerlink" href="#1-principios-arquitectonicos-clave" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Clean Architecture &amp; DDD:</strong> La lógica de negocio (dominio) es el corazón y es independiente de tecnologías externas (frameworks, bases de datos, sistemas de mensajería). El dominio "grita" sus capacidades.</li>
+<li><strong>Screaming Architecture:</strong> La estructura del código debe reflejar el dominio del negocio, no las tecnologías o frameworks. Una mirada rápida a la estructura de carpetas debe indicar qué hace el sistema.</li>
+<li><strong>Separación de Preocupaciones (SoC):</strong> Cada capa y componente tiene una única responsabilidad bien definida.</li>
+<li><strong>Independencia del Lenguaje:</strong> Las ideas y patrones aquí descritos son aplicables en Java, TypeScript, Python y otros lenguajes orientados a objetos.</li>
+<li><strong>Mínimo Over-engineering:</strong> Buscamos soluciones directas y efectivas, evitando complejidades innecesarias que no aporten valor inmediato.</li>
+<li><strong>Orientación a la Testeabilidad:</strong> La separación de capas facilita las pruebas unitarias y de integración de cada componente de forma aislada.</li>
+</ul>
+<hr />
+<h2 id="2-estructura-general-del-microservicio">2. Estructura General del Microservicio<a class="headerlink" href="#2-estructura-general-del-microservicio" title="Permanent link">&para;</a></h2>
+<p>Todo microservicio seguirá una estructura de carpetas que refleje sus features (funcionalidades de negocio) y capas internas.</p>
+<div class="codehilite"><pre><span></span><code>.
+├──<span class="w"> </span>src/<span class="w">                            </span><span class="c1"># Carpeta raíz del código fuente</span>
+│<span class="w">   </span>├──<span class="w"> </span>app/<span class="w">                        </span><span class="c1"># Código principal de la aplicación (Java/TypeScript/Python)</span>
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>&lt;nombre-servicio&gt;/<span class="w">      </span><span class="c1"># Namespace o paquete raíz del microservicio</span>
+│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>application/<span class="w">        </span><span class="c1"># Orquestación de dependencias (DI)</span>
+│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>core/<span class="w">               </span><span class="c1"># Componentes fundamentales y transversales</span>
+│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>features/<span class="w">           </span><span class="c1"># Módulos de funcionalidad (Screaming Architecture por feature)</span>
+│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>&lt;feature-name&gt;/<span class="w"> </span><span class="c1"># Ej: users, products, orders</span>
+│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>controllers/<span class="w">    </span><span class="c1"># Entrada HTTP (REST)</span>
+│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>services/<span class="w">       </span><span class="c1"># Aplicación de casos de uso (orquesta dominio y data)</span>
+│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>domain/<span class="w">         </span><span class="c1"># Lógica de negocio, entidades, CASOS DE USO, interfaces de repositorio</span>
+│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>data/<span class="w">           </span><span class="c1"># Implementaciones de repositorios, DTOs, adaptadores</span>
+│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>transports/<span class="w">     </span><span class="c1"># Futura migración a eventos/colas</span>
+│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>common/<span class="w">             </span><span class="c1"># Componentes comunes entre features (si aplica)</span>
+│<span class="w">   </span>│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>utils/<span class="w">              </span><span class="c1"># Funciones auxiliares/comunes</span>
+│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>MainApplication.java<span class="w">    </span><span class="c1"># Punto de entrada (o main.ts, main.py)</span>
+│<span class="w">   </span>├──<span class="w"> </span>resources/<span class="w">                  </span><span class="c1"># Archivos de configuración, plantillas, etc. (Java)</span>
+│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>application.properties.example<span class="w"> </span>/<span class="w"> </span>.env.example
+│<span class="w">   </span>└──<span class="w"> </span>test/<span class="w">                       </span><span class="c1"># Código de pruebas</span>
+├──<span class="w"> </span>Dockerfile.dev<span class="w">                  </span><span class="c1"># Dockerfile para entorno de desarrollo</span>
+├──<span class="w"> </span>Dockerfile.prod<span class="w">                 </span><span class="c1"># Dockerfile para entorno de producción</span>
+├──<span class="w"> </span>README.md<span class="w">                       </span><span class="c1"># Documentación del servicio</span>
+├──<span class="w"> </span>swagger.yaml<span class="w"> </span>/<span class="w"> </span>openapi.yaml<span class="w">     </span><span class="c1"># Documentación Swagger/OpenAPI</span>
+└──<span class="w"> </span>pom.xml<span class="w"> </span>/<span class="w"> </span>package.json<span class="w"> </span>/<span class="w"> </span>requirements.txt<span class="w"> </span><span class="c1"># Dependencias y configuración del proyecto</span>
+</code></pre></div>
+
+<hr />
+<h2 id="3-descripcion-de-capas-minimas-necesarias">3. Descripción de Capas Mínimas Necesarias<a class="headerlink" href="#3-descripcion-de-capas-minimas-necesarias" title="Permanent link">&para;</a></h2>
+<h3 id="31-capa-core">3.1. Capa core<a class="headerlink" href="#31-capa-core" title="Permanent link">&para;</a></h3>
+<p>Componentes fundamentales y transversales, independientes de la lógica de negocio. Es la base de la aplicación.</p>
+<p><strong>Propósito:</strong> Proporcionar infraestructura básica y genérica que otras capas necesitan.</p>
+<p><strong>Contiene:</strong></p>
+<ul>
+<li>Configuraciones Globales</li>
+<li>Middlewares/Interceptors</li>
+<li>Manejo de Excepciones</li>
+<li>Logging</li>
+</ul>
+<p><strong>Dependencias:</strong> No debe depender de ninguna otra capa específica de negocio (features).</p>
+<hr />
+<h3 id="32-capa-utils">3.2. Capa utils<a class="headerlink" href="#32-capa-utils" title="Permanent link">&para;</a></h3>
+<p>Funciones auxiliares o comunes que no encajan en ninguna otra capa específica.</p>
+<p><strong>Propósito:</strong> Contener utilidades genéricas y reutilizables.</p>
+<p><strong>Contiene:</strong> Funciones de ayuda para fechas, cadenas, criptografía, etc.</p>
+<p><strong>Dependencias:</strong> Debe ser lo más independiente posible.</p>
+<hr />
+<h3 id="33-capa-application">3.3. Capa application<a class="headerlink" href="#33-capa-application" title="Permanent link">&para;</a></h3>
+<p>Punto central para la inyección de dependencias y la orquestación inicial de los servicios.</p>
+<p><strong>Propósito:</strong> Configurar y proporcionar las instancias concretas de los servicios y sus dependencias a la capa de entrada (controllers).</p>
+<p><strong>Contiene:</strong> Módulos de configuración de inyección de dependencias.</p>
+<p><strong>Dependencias:</strong> Depende de las interfaces definidas en domain y de las implementaciones de los servicios.</p>
+<hr />
+<h3 id="34-capa-features">3.4. Capa features/<feature><a class="headerlink" href="#34-capa-features" title="Permanent link">&para;</a></h3>
+<p>Cada feature es un módulo de negocio independiente, encapsulando una funcionalidad completa.</p>
+<h4 id="341-controllers">3.4.1. controllers<a class="headerlink" href="#341-controllers" title="Permanent link">&para;</a></h4>
+<p>Punto de entrada de las solicitudes HTTP (REST).</p>
+<p><strong>Propósito:</strong> Recibir solicitudes externas, delegar la ejecución de casos de uso y formatear la respuesta.</p>
+<p><strong>Dependencias:</strong> Depende de services y dtos. No debe contener lógica de negocio directa.</p>
+<h4 id="342-services">3.4.2. services<a class="headerlink" href="#342-services" title="Permanent link">&para;</a></h4>
+<p>Aplicación de casos de uso de negocio.</p>
+<p><strong>Propósito:</strong> Orquestar el flujo de un caso de uso.</p>
+<p><strong>Dependencias:</strong> Depende de domain y data.</p>
+<h4 id="343-domain">3.4.3. domain<a class="headerlink" href="#343-domain" title="Permanent link">&para;</a></h4>
+<p>El corazón de la lógica de negocio. Es completamente independiente de la tecnología.</p>
+<p><strong>Propósito:</strong> Contener las reglas de negocio, entidades, objetos de valor y Casos de Uso puros, así como las interfaces para interactuar con datos.</p>
+<p><strong>Contiene:</strong></p>
+<ul>
+<li>Entidades</li>
+<li>Objetos de Valor</li>
+<li>Casos de Uso</li>
+<li>Interfaces de Repositorio</li>
+<li>Excepciones de Dominio</li>
+</ul>
+<p><strong>Dependencias:</strong> No debe depender de ninguna otra capa de la feature.</p>
+<h4 id="344-data">3.4.4. data<a class="headerlink" href="#344-data" title="Permanent link">&para;</a></h4>
+<p>Implementaciones de acceso a la base de datos y otros sistemas externos.</p>
+<p><strong>Propósito:</strong> Implementar las interfaces de repositorio definidas en domain.</p>
+<p><strong>Contiene:</strong></p>
+<ul>
+<li>Implementaciones de Repositorios</li>
+<li>DTOs</li>
+<li>Adaptadores/Mapeadores</li>
+</ul>
+<p><strong>Dependencias:</strong> Depende de domain y puede usar utilidades de core.</p>
+<h4 id="345-transports">3.4.5. transports<a class="headerlink" href="#345-transports" title="Permanent link">&para;</a></h4>
+<p>Mecanismos de comunicación futuros para eventos o colas.</p>
+<p><strong>Propósito:</strong> Abstraer los detalles de la comunicación asíncrona.</p>
+<p><strong>Dependencias:</strong> Debería depender solo de domain y de core.</p>
+<hr />
+<h2 id="4-flujo-de-comunicacion-tipico-restful">4. Flujo de Comunicación Típico (RESTful)<a class="headerlink" href="#4-flujo-de-comunicacion-tipico-restful" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Solicitud HTTP Externa:</strong> Llega al Controller.</li>
+<li><strong>Controller:</strong> Valida el DTO de entrada. Si falla, responde con 400. Invoca el método apropiado en Services.</li>
+<li><strong>Service:</strong> Invoca el Caso de Uso de Domain. Maneja excepciones y transforma el resultado en un DTO de respuesta.</li>
+<li><strong>Caso de Uso (Domain):</strong> Ejecuta la lógica de negocio pura.</li>
+<li><strong>Repository (Data):</strong> Traduce la solicitud a operaciones de bajo nivel y mapea la respuesta.</li>
+<li><strong>Dominio:</strong> Aplica transformaciones o validaciones internas.</li>
+<li><strong>Retorno de Datos:</strong> El resultado es devuelto al Caso de Uso, luego al Service, y finalmente al Controller.</li>
+<li><strong>Controller:</strong> Envía el DTO de respuesta como respuesta HTTP.</li>
+</ol>
+<hr />
+<h2 id="5-componentes-obligatorios-del-microservicio">5. Componentes Obligatorios del Microservicio<a class="headerlink" href="#5-componentes-obligatorios-del-microservicio" title="Permanent link">&para;</a></h2>
+<h3 id="51-dockerfile-funcional">5.1. Dockerfile Funcional<a class="headerlink" href="#51-dockerfile-funcional" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Dockerfile.dev:</strong> Optimizado para desarrollo.</li>
+<li><strong>Dockerfile.prod:</strong> Optimizado para producción.</li>
+</ul>
+<h3 id="52-archivo-de-configuracion-de-entorno">5.2. Archivo de Configuración de Entorno<a class="headerlink" href="#52-archivo-de-configuracion-de-entorno" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>.env.example</strong> (TypeScript/Python)</li>
+<li><strong>application.properties.example</strong> (Java)</li>
+</ul>
+<h3 id="53-documentacion-swaggeropenapi">5.3. Documentación Swagger/OpenAPI<a class="headerlink" href="#53-documentacion-swaggeropenapi" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Archivo <code>swagger.yaml</code> o <code>openapi.yaml</code>.</li>
+<li>Accesible vía <code>/docs</code> en desarrollo.</li>
+</ul>
+<h3 id="54-readmemd-completo">5.4. README.md Completo<a class="headerlink" href="#54-readmemd-completo" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Descripción del microservicio y su dominio.</li>
+<li>Prerrequisitos.</li>
+<li>Pasos para ejecutar el servicio.</li>
+<li>Comandos de pruebas.</li>
+<li>Instrucciones para documentación Swagger/OpenAPI.</li>
+</ul>
+<h3 id="55-punto-de-entrada-bien-definido">5.5. Punto de Entrada Bien Definido<a class="headerlink" href="#55-punto-de-entrada-bien-definido" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>MainApplication.java</strong> (Java)</li>
+<li><strong>main.ts</strong> (TypeScript)</li>
+<li><strong>main.py</strong> (Python)</li>
+</ul>
+<h3 id="56-control-centralizado-de-errores-y-status-http">5.6. Control Centralizado de Errores y Status HTTP<a class="headerlink" href="#56-control-centralizado-de-errores-y-status-http" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Uso de interceptores, filtros o aspectos globales.</li>
+<li>Mapeo de excepciones a códigos HTTP semánticos.</li>
+<li>Cuerpo de respuesta de error estandarizado.</li>
+<li>Logging adecuado de errores.</li>
+</ul>
+<h3 id="57-sistema-de-logging-estructurado">5.7. Sistema de Logging Estructurado<a class="headerlink" href="#57-sistema-de-logging-estructurado" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Preferir formatos JSON.</li>
+<li>Usar niveles apropiados (DEBUG, INFO, WARN, ERROR).</li>
+<li>Incluir contexto relevante.</li>
+</ul>
+<hr />
+<h2 id="6-directrices-adicionales">6. Directrices Adicionales<a class="headerlink" href="#6-directrices-adicionales" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Inmutabilidad:</strong> Preferir la inmutabilidad para Entidades y DTOs.</li>
+<li><strong>Validación de Entrada:</strong> Validación robusta de todos los DTOs de entrada.</li>
+<li><strong>Nomenclatura Consistente:</strong> Seguir convenciones claras.</li>
+<li><strong>Pruebas Unitarias e Integración:</strong> Fomentar cobertura en todas las capas, especialmente en domain y services.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>
