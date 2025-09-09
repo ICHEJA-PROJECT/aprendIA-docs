@@ -3,11 +3,23 @@ site_url: https://icheja-project.github.io/aprendIA-docs/
 theme:
   name: material
   palette:
-    primary: 'blue'
-    accent: 'light blue'
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: 'blue'
+      accent: 'dark blue'
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: 'blue'
+      accent: 'light blue'
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
   font:
-    text: Roboto
-    code: Roboto Mono
+    text: Cascadia
+    code: Cascadia Code
 
 nav:
   - Inicio: index.md
@@ -16,6 +28,7 @@ nav:
   - Guías Técnicas:
       - Arquitectura backend: guias/arquitectura-backend.md
       - Arquitectura mobile: guias/arquitectura-mobile.md
+      - Arquitectura web: guias/arquitectura-web.md
 
 markdown_extensions:
   - toc:
